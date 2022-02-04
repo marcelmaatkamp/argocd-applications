@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: git-sync-config
+data:
+  GIT_SYNC_REPO: https://github.com/marcelmaatkamp/presentations
+  GIT_SYNC_BRANCH: master

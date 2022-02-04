@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: reveal-md
+spec:
+ replicas: 1
+ template:
+  spec:
+#  serviceAccountName: prometheus-server
+   containers:
+   - name: git-sync
+     image: k8s.gcr.io/git-sync/git-sync:v3.4.0
+     envFrom:
+     - configMapRef:
+         name: git-sync-config
+     volumeMounts:
+      - name: slides
+        mountPath: /slides
+   - name: reveal-md
+     image: webpronl/reveal-md:latest
+     ports:
+      - containerPort: 1948
+     volumeMounts:
+      - name: slides
+        mountPath: /slides
+   volumes:
+   - name: slides
+     emptyDir: {}

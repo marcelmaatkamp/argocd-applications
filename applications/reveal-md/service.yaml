@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: reveal-md-server
+spec:
+ type: NodePort
+ ports:
+ - port: 1948
+   targetPort: 1948
