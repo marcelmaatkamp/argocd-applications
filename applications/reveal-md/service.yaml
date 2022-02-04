@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: reveal-md-server
+ name: reveal-md
 spec:
  type: NodePort
  ports:

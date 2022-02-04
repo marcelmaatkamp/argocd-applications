@@ -7,9 +7,14 @@ spec:
  template:
   spec:
 #  serviceAccountName: prometheus-server
+   securityContext:
+     fsGroup: 65533
+     runAsNonRoot: true
    containers:
    - name: git-sync
      image: k8s.gcr.io/git-sync/git-sync:v3.4.0
+     securityContext:
+       runAsUser: 1000
      envFrom:
      - configMapRef:
          name: git-sync-config
@@ -18,6 +23,9 @@ spec:
         mountPath: /slides
    - name: reveal-md
      image: webpronl/reveal-md:latest
+     args: ["/slides/master/","--watch"]
+     securityContext:
+       runAsUser: 1000
      ports:
       - containerPort: 1948
      volumeMounts:

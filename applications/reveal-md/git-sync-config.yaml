@@ -5,3 +5,5 @@ metadata:
 data:
   GIT_SYNC_REPO: https://github.com/marcelmaatkamp/presentations
   GIT_SYNC_BRANCH: master
+  GIT_SYNC_ROOT: /slides
+  GIT_SYNC_DEST: master
